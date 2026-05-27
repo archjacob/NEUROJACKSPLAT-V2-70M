@@ -1,23 +1,20 @@
 
 
-# NeuroJackSplat
+# NEUROJACKSPLAT-V2-70M
 
-**NeuroJackSplat** is an end-to-end engine for 3D reconstruction from single images, combining the power of visual transformers (**NeuroForge/DINOv2**) with the efficiency of **3D Gaussian Splatting (3DGS)**.
+NeuroJackSplat-V2-70M is an advanced 3D Reconstruction pipeline that uses **DINOv2** and **Structure from Motion (COLMAP)** to reconstruct geometry from "in-the-wild" images.
 
-## Architecture
-The project is built on three engineering pillars:
-* **Feature Extraction:** Uses the `NeuroForge` architecture (DINOv2 backbone) to extract deep geometric representations.
-* **Gaussian Regressor Head:** An "Anchor-based" regressor that predicts 3D parameters (means, scales, rotations, opacities) for millions of Gaussians.
-* **CUDA Rasterization Engine:** Engine optimized for real-time visualization of Gaussian point clouds.
+## Topics
+`3d-reconstruction` `computer-vision` `gaussian-splatting` `zero-shot-learning` `dinov2` `point-cloud` `colmap` `pytorch`
 
-## Features
-- [x] **Zero-Shot/Single-Image Reconstruction**: Convert a 2D image into a 3D "Splat".
-- [x] **Differentiable Rendering**: Direct training using `L1 Loss` and `Backpropagation` on the CUDA engine.
-- [x] **Customized Memory Management**: Optimized for Kaggle environments with `bitsandbytes`.
-- [x] **Cyber-Ready Security**: Designed with `CyberJack` architecture standards.
+---
+
+## Engineering (Pipeline)
+1. **Calibration:** Automatic spatial structuring with `pycolmap`.
+2. **Feature Extraction:** Using transform vision (DINOv2) to understand depth.
+3. **Latent Space Mapping:** Generating depth maps with our Cost-Volume architecture.
+4. **Rendering:** Interactive 3D visualization via [Plotly/WebGL].
 
 ## Installation
-To compile the rendering engine (C++/CUDA), run:
 ```bash
-git clone --recursive [https://github.com/graphdeco-inria/diff-gaussian-rasterization](https://github.com/graphdeco-inria/diff-gaussian-rasterization)
-pip install ./diff-gaussian-rasterization
+pip install torch pycolmap plotly pillow numpy
